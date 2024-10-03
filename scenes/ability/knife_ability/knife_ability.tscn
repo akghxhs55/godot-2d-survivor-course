@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://dru6n0ja3ooug"]
+
+[ext_resource type="PackedScene" uid="uid://bq8dicxusdgje" path="res://scenes/component/hitbox_component.tscn" id="1_hax6l"]
+[ext_resource type="Script" path="res://scenes/ability/knife_ability/knife_ability.gd" id="1_l04f6"]
+[ext_resource type="Texture2D" uid="uid://7btg5vxdjh10" path="res://scenes/ability/knife_ability/knife.png" id="1_oe7ib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul2dh"]
+size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_284wj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_atpag"]
+resource_name = "swing"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 7.46426, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1.3, 1.3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gnkj"]
+_data = {
+"RESET": SubResource("Animation_284wj"),
+"swing": SubResource("Animation_atpag")
+}
+
+[node name="KnifeAbility" type="Node2D"]
+script = ExtResource("1_l04f6")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_hax6l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_ul2dh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5gnkj")
+}
+autoplay = "swing"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_oe7ib")
+offset = Vector2(0, -3)
