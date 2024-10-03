@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://328n4hrfw1kw"]
+
+[ext_resource type="PackedScene" uid="uid://dhicfkos0ya6k" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_6ytft"]
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="1_47c8v"]
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="2_nb6wi"]
+[ext_resource type="Resource" uid="uid://bl6b1qrbqi0hj" path="res://resources/upgrades/axe_scale.tres" id="3_v12wo"]
+
+[resource]
+script = ExtResource("1_47c8v")
+ability_controller_scene = ExtResource("1_6ytft")
+ability_upgrades = Array[ExtResource("2_nb6wi")]([ExtResource("3_v12wo")])
+id = "axe"
+name = "Axe"
+description = "Periodically sends out a spinning axe."
+max_quantity = 1

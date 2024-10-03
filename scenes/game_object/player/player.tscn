@@ -32,9 +32,9 @@ script = ExtResource("1_5j8p4")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_mhuo2")]
 
-[node name="AbilityManager" type="Node" parent="."]
+[node name="Abilities" type="Node" parent="."]
 
-[node name="KnifeAbilityController" parent="AbilityManager" instance=ExtResource("2_2pvys")]
+[node name="KnifeAbilityController" parent="Abilities" instance=ExtResource("2_2pvys")]
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
