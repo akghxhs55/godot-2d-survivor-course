@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var visuals: Node2D = $Visuals
-@onready var velocity_component: Node = $VelocityComponent
+@onready var velocity_component = $VelocityComponent
 
 
 func _process(delta: float) -> void:

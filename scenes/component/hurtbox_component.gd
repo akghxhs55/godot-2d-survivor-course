@@ -8,7 +8,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	
 	
-func _on_area_entered(other_area: Area2D):
+func _on_area_entered(other_area: Area2D) -> void:
 	if not other_area is HitboxComponent:
 		return
 		
