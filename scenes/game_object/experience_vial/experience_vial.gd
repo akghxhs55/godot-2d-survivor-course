@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	
 func _on_area_entered(other_area: Area2D):
-	var tween: Tween = create_tween()
+	var tween: Tween = create_tween().set_parallel(true)
 	$Area2D.area_entered.disconnect(_on_area_entered)
 	tween.tween_method(_tween_collect.bind(global_position), 0.0, 1.0, 0.5)\
 		.set_ease(Tween.EASE_IN)\
