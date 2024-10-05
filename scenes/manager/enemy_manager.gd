@@ -31,7 +31,7 @@ func _get_spawn_position() -> Vector2:
 		var query_result: Dictionary = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 		if query_result.is_empty():
 			return spawn_position
-		
+
 	return player.global_position
 		
 
