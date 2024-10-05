@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8hxumwg0h8tn"]
+[gd_scene load_steps=15 format=3 uid="uid://8hxumwg0h8tn"]
 
 [ext_resource type="Script" path="res://scenes/game_object/ghost_enemy/ghost_enemy.gd" id="1_7ujgh"]
 [ext_resource type="Texture2D" uid="uid://c7fubbj56yb33" path="res://scenes/game_object/ghost_enemy/ghost_enemy.png" id="1_fu3wo"]
@@ -6,7 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://7s301u7tjium" path="res://scenes/component/death_component.tscn" id="2_5kvwl"]
 [ext_resource type="PackedScene" uid="uid://7qy28g6j83wx" path="res://scenes/component/vial_drop_component.tscn" id="2_xa6w2"]
 [ext_resource type="PackedScene" uid="uid://sa61c1u7xiwq" path="res://scenes/component/hurtbox_component.tscn" id="3_wwevo"]
+[ext_resource type="PackedScene" uid="uid://c2lfbqutk3ttf" path="res://scenes/component/hit_flash_component.tscn" id="6_3cyuf"]
+[ext_resource type="Material" uid="uid://bubakuchp7ee4" path="res://scenes/component/hit_flash_component_material.tres" id="6_xic2x"]
 [ext_resource type="PackedScene" uid="uid://dbjimt881h6su" path="res://scenes/component/velocity_component.tscn" id="7_74w3s"]
+
+[sub_resource type="Animation" id="Animation_t54rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
 
 [sub_resource type="Animation" id="Animation_j623s"]
 resource_name = "float"
@@ -24,21 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, -5), Vector2(0, -8), Vector2(0, -8), Vector2(0, -5)]
-}
-
-[sub_resource type="Animation" id="Animation_t54rg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sqv1o"]
@@ -75,6 +77,11 @@ acceleration = 2
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_xa6w2")]
 drop_percent = 0.8
 healthComponent = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_3cyuf")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = ExtResource("6_xic2x")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_5kvwl")]
 health_component = NodePath("../HealthComponent")

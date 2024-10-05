@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdx2ihkw7dlss"]
+[gd_scene load_steps=15 format=3 uid="uid://bdx2ihkw7dlss"]
 
 [ext_resource type="Texture2D" uid="uid://c1dyfn411o6mg" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_483uo"]
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_xetwp"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://7s301u7tjium" path="res://scenes/component/death_component.tscn" id="4_6ojvh"]
 [ext_resource type="PackedScene" uid="uid://sa61c1u7xiwq" path="res://scenes/component/hurtbox_component.tscn" id="4_xlhyk"]
 [ext_resource type="PackedScene" uid="uid://dbjimt881h6su" path="res://scenes/component/velocity_component.tscn" id="4_ym6co"]
+[ext_resource type="PackedScene" uid="uid://c2lfbqutk3ttf" path="res://scenes/component/hit_flash_component.tscn" id="6_tm1xa"]
+[ext_resource type="Material" uid="uid://bubakuchp7ee4" path="res://scenes/component/hit_flash_component_material.tres" id="6_wphk3"]
 
 [sub_resource type="Animation" id="Animation_pdiml"]
 length = 0.001
@@ -119,6 +121,11 @@ healthComponent = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_ym6co")]
 max_speed = 60
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_tm1xa")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = ExtResource("6_wphk3")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_6ojvh")]
 health_component = NodePath("../HealthComponent")
