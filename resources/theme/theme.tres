@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cq8a0thygoygw"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cq8a0thygoygw"]
 
 [ext_resource type="Texture2D" uid="uid://b5en8v2i4mtgy" path="res://assets/ui/ui.png" id="1_ac8ep"]
 [ext_resource type="FontFile" uid="uid://c600o8pegxnj7" path="res://resources/theme/Rockboxcond12.ttf" id="1_ila71"]
@@ -41,6 +41,35 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(4, 20, 8, 8)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2y3kv"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tfa66"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wlef"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qqx8"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyf24"]
+content_margin_left = 2.0
+content_margin_top = 6.0
+content_margin_right = 2.0
+content_margin_bottom = 6.0
+bg_color = Color(0.160784, 0.2, 0.254902, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vklek"]
 texture = ExtResource("1_ac8ep")
 texture_margin_left = 4.0
@@ -57,6 +86,9 @@ default_font = ExtResource("1_ila71")
 default_font_size = 16
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_3fd4d")
+BlueOutlineLabel/base_type = &"Label"
+BlueOutlineLabel/colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+BlueOutlineLabel/constants/outline_size = 8
 Button/colors/font_color = Color(0.247059, 0.14902, 0.192157, 1)
 Button/colors/font_focus_color = Color(0.247059, 0.14902, 0.192157, 1)
 Button/colors/font_hover_color = Color(0.43806, 0.28287, 0.350803, 1)
@@ -65,6 +97,11 @@ Button/styles/focus = SubResource("StyleBoxEmpty_b8rst")
 Button/styles/hover = SubResource("StyleBoxTexture_2045a")
 Button/styles/normal = SubResource("StyleBoxTexture_4vcre")
 Button/styles/pressed = SubResource("StyleBoxTexture_6cvyb")
+HSlider/icons/grabber = SubResource("PlaceholderTexture2D_2y3kv")
+HSlider/icons/grabber_highlight = SubResource("PlaceholderTexture2D_tfa66")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_8wlef")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_5qqx8")
+HSlider/styles/slider = SubResource("StyleBoxFlat_fyf24")
 Label/constants/line_spacing = 1
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_vklek")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_vahq0")
