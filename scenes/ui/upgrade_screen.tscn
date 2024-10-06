@@ -1,11 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm5pw5bmp0n01"]
+[gd_scene load_steps=7 format=3 uid="uid://dm5pw5bmp0n01"]
 
 [ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_8u5qn"]
 [ext_resource type="PackedScene" uid="uid://dd407j3tawa8" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_au0d5"]
 
+[sub_resource type="Animation" id="Animation_cw0ty"]
+resource_name = "in"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3ddbf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sri6m"]
+resource_name = "out"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6lpw"]
+_data = {
+"RESET": SubResource("Animation_3ddbf"),
+"in": SubResource("Animation_cw0ty"),
+"out": SubResource("Animation_sri6m")
+}
+
 [node name="UpgradeScreen" type="CanvasLayer"]
 script = ExtResource("1_8u5qn")
 upgrade_card_scenes = ExtResource("1_au0d5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v6lpw")
+}
+autoplay = "in"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.352941)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -19,3 +89,4 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 16
