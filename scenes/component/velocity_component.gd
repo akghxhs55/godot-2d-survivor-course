@@ -16,15 +16,15 @@ func accelerate_to_player(delta: float) -> void:
 		return
 		
 	var direction: Vector2 = (player.global_position - owner_node2d.global_position).normalized()
-	_accelerate_in_direction(direction, delta)
+	accelerate_in_direction(direction, delta)
 
 
+func accelerate_in_direction(direction: Vector2, delta: float) -> void:
+	var desired_velocity: Vector2 = direction * max_speed
+	velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * delta))
+	
+	
 func move(charactor_body: CharacterBody2D) -> void:
 	charactor_body.velocity = velocity
 	charactor_body.move_and_slide()
 	velocity = charactor_body.velocity
-
-
-func _accelerate_in_direction(direction: Vector2, delta: float) -> void:
-	var desired_velocity: Vector2 = direction * max_speed
-	velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * delta))
