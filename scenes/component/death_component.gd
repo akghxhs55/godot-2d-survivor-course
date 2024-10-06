@@ -21,4 +21,5 @@ func _on_died() -> void:
 	global_position = spawn_position
 	
 	$AnimationPlayer.play("default")
+	$HitRandomStreamPlayer2DComponent.play_random()
 	

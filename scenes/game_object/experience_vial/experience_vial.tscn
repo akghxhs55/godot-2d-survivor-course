@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcxc50e0e88e3"]
+[gd_scene load_steps=10 format=3 uid="uid://bcxc50e0e88e3"]
 
 [ext_resource type="Script" path="res://scenes/game_object/experience_vial/experience_vial.gd" id="1_2j5mn"]
 [ext_resource type="Texture2D" uid="uid://dco04i8a0jpyq" path="res://scenes/game_object/experience_vial/experience_vial.png" id="1_uitit"]
+[ext_resource type="PackedScene" uid="uid://5hrpbv6e1dnw" path="res://scenes/component/random_stream_player_2d_component.tscn" id="3_i55rc"]
+[ext_resource type="AudioStream" uid="uid://cj4jgx3rukcsl" path="res://assets/audio/impactMetal_heavy_000.ogg" id="4_5ypy7"]
+[ext_resource type="AudioStream" uid="uid://vkjotnfy783c" path="res://assets/audio/impactMetal_heavy_001.ogg" id="5_24y2m"]
+[ext_resource type="AudioStream" uid="uid://kk4m2lrbpyoh" path="res://assets/audio/impactMetal_heavy_002.ogg" id="6_3cid6"]
+[ext_resource type="AudioStream" uid="uid://d2roec7v37lj2" path="res://assets/audio/impactMetal_heavy_003.ogg" id="7_svgaq"]
+[ext_resource type="AudioStream" uid="uid://dwgbhgsp548sd" path="res://assets/audio/impactMetal_heavy_004.ogg" id="8_wqihe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcq15"]
 radius = 7.0
@@ -19,3 +25,7 @@ shape = SubResource("CircleShape2D_hcq15")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_uitit")
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("3_i55rc")]
+process_mode = 3
+streams = Array[AudioStream]([ExtResource("4_5ypy7"), ExtResource("5_24y2m"), ExtResource("6_3cid6"), ExtResource("7_svgaq"), ExtResource("8_wqihe")])

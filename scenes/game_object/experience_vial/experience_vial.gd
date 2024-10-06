@@ -19,6 +19,7 @@ func _on_area_entered(other_area: Area2D):
 	tween.tween_callback(_collect)
 	
 	
+	
 func _tween_collect(percent: float, start_position: Vector2) -> void:
 	var player: Node2D = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
@@ -33,4 +34,6 @@ func _tween_collect(percent: float, start_position: Vector2) -> void:
 
 func _collect() -> void:
 	GameEvents.emit_experience_vial_collected(1)
+	$RandomStreamPlayer2DComponent.play_random()
+	await $RandomStreamPlayer2DComponent.finished
 	queue_free()
