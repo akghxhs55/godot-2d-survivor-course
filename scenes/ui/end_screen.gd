@@ -19,11 +19,13 @@ func _ready() -> void:
 func set_victory() -> void:
 	$%TitleLabel.text = "Victory"
 	$%DescriptionLabel.text = "You have won!"
+	_play_jingle_victory()
 
 	
 func set_defeat() -> void:
 	$%TitleLabel.text = "Defeat"
 	$%DescriptionLabel.text = "You have been defeated!"
+	_play_jingle_defeat()
 
 	
 func _on_restart_button_pressed() -> void:
@@ -33,3 +35,11 @@ func _on_restart_button_pressed() -> void:
 	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _play_jingle_victory():
+	$VictoryStreamPlayer.play()
+
+
+func _play_jingle_defeat():
+	$DefeatStreamPlayer.play()
