@@ -72,6 +72,7 @@ func _on_damage_interval_timer_timeout() -> void:
 	
 	
 func _on_health_changed() -> void:
+	GameEvents.emit_player_damaged()
 	_update_health_display()
 	
 	
