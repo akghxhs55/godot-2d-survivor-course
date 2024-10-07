@@ -34,9 +34,11 @@ func _on_resume_pressed() -> void:
 	
 	
 func _on_options_pressed() -> void:
-	var options_menu_instance: CanvasLayer = options_menu_scene.instantiate() as CanvasLayer
-	add_child(options_menu_instance)
-	options_menu_instance.back_pressed.connect(_on_options_back_pressed.bind(options_menu_instance))
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+	var options_instance: Node = options_menu_scene.instantiate() as Node
+	add_child(options_instance)
+	options_instance.back_pressed.connect(_on_options_back_pressed.bind(options_instance))
 	
 	
 func _on_quit_pressed() -> void:
