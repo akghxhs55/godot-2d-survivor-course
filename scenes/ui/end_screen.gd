@@ -36,10 +36,10 @@ func _on_continue_button_pressed() -> void:
 	
 	
 func _on_quit_button_pressed() -> void:
-	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
 	get_tree().paused = false
-
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _play_jingle_victory():
 	$VictoryStreamPlayer.play()

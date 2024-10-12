@@ -103,7 +103,7 @@ _data = {
 "fly": SubResource("Animation_vosm2")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8ei0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u0ts"]
 resource_local_to_scene = true
 shader = ExtResource("6_plhg4")
 shader_parameter/lerp_percent = 0.0
@@ -136,7 +136,7 @@ max_speed = 60
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_tm1xa")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_n8ei0")
+hit_flash_material = SubResource("ShaderMaterial_3u0ts")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_6ojvh")]
 health_component = NodePath("../HealthComponent")
