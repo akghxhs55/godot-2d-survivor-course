@@ -32,3 +32,4 @@ func _on_timer_timeout() -> void:
 	var victory_screen: CanvasLayer = end_screen_scene.instantiate() as CanvasLayer
 	add_child(victory_screen)
 	victory_screen.set_victory()
+	MetaProgression.save()

@@ -5,14 +5,17 @@ var options_scene: PackedScene = preload("res://scenes/ui/options_menu.tscn")
 
 func _ready() -> void:
 	$%PlayButton.pressed.connect(_on_play_button_pressed)
+	$%UpgradesButton.pressed.connect(_on_upgrades_button_pressed)
 	$%OptionsButton.pressed.connect(_on_options_button_pressed)
 	$%QuitButton.pressed.connect(_on_quit_button_pressed)
 	
 	
 func _on_play_button_pressed() -> void:
-	ScreenTransition.transition()
-	await ScreenTransition.transitioned_halfway
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/main/main.tscn")
+	
+	
+func _on_upgrades_button_pressed() -> void:
+	ScreenTransition.transition_to_scene("res://scenes/ui/meta_menu.tscn")
 	
 	
 func _on_options_button_pressed() -> void:
